@@ -42,3 +42,10 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Terraform ###
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log

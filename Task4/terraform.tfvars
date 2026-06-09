@@ -1,0 +1,10 @@
+public_key    = "C:/Users/roma_/.ssh/id_ed25519.pub"
+folder_id     = "b1gss8h4dtll6dm2o2qc"
+zone          = "ru-central1-b"
+image_family  = "ubuntu-2204-lts"
+disk_name     = "app-disk"
+disk_type     = "network-ssd"
+disk_id       = null
+network_name  = "app-network"
+subnet_name   = "app-subnet"
+instance_name = "app-future-vm"

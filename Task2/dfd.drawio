@@ -1,0 +1,57 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.0.6 Chrome/138.0.7204.100 Electron/37.2.3 Safari/537.36" version="28.0.6">
+  <diagram name="DFD - Domains and Flows (Future State)" id="0">
+    <mxGraphModel dx="1106" dy="856" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="MilJnWFoq60B_J2lkq7D-8" value="события(клиенты, персонал)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="MilJnWFoq60B_J2lkq7D-1" target="MilJnWFoq60B_J2lkq7D-6" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="140" y="270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MilJnWFoq60B_J2lkq7D-1" value="Внутренние сервисы клиники" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MilJnWFoq60B_J2lkq7D-9" value="события (транзакции, кредиты)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="1" source="MilJnWFoq60B_J2lkq7D-2" target="MilJnWFoq60B_J2lkq7D-6" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="220" />
+              <mxPoint x="510" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MilJnWFoq60B_J2lkq7D-2" value="Финтех" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="280" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MilJnWFoq60B_J2lkq7D-10" value="данные" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;" parent="1" source="MilJnWFoq60B_J2lkq7D-6" target="MilJnWFoq60B_J2lkq7D-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MilJnWFoq60B_J2lkq7D-3" value="ИИ-сервисы" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="480" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MilJnWFoq60B_J2lkq7D-11" value="B2B Api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" source="MilJnWFoq60B_J2lkq7D-4" target="MilJnWFoq60B_J2lkq7D-6" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="220" />
+              <mxPoint x="570" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MilJnWFoq60B_J2lkq7D-4" value="Партнеры (фармацевтика)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="680" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MilJnWFoq60B_J2lkq7D-12" value="данные" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="MilJnWFoq60B_J2lkq7D-6" target="MilJnWFoq60B_J2lkq7D-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MilJnWFoq60B_J2lkq7D-6" value="Платформа данных" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="480" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MilJnWFoq60B_J2lkq7D-7" value="Витрина данных + BI" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="880" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

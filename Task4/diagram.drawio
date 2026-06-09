@@ -1,0 +1,116 @@
+<mxfile host="app.diagrams.net" agent="Codex">
+  <diagram id="deployment-automation" name="Диаграмма автоматизации развёртывания">
+    <mxGraphModel dx="3855" dy="2125" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2339" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="terraform_group" parent="1" style="swimlane;html=1;rounded=0;startSize=40;horizontal=1;fillColor=#fffde7;strokeColor=#b3ad18;fontSize=22;fontStyle=1;" value="Terraform" vertex="1">
+          <mxGeometry height="1010" width="820" x="720" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="infra_group" parent="terraform_group" style="swimlane;html=1;rounded=0;startSize=55;horizontal=1;fillColor=#fffde7;strokeColor=#b3ad18;fontSize=22;fontStyle=1;" value="Yandex Cloud" vertex="1">
+          <mxGeometry height="630" width="730" x="45" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="network" parent="infra_group" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=2;fontSize=20;" value="yandex_vpc_network&lt;br&gt;yandex_vpc_subnet&lt;br&gt;(CIDR, zone)" vertex="1">
+          <mxGeometry height="150" width="300" x="60" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="disk" parent="infra_group" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=2;fontSize=20;" value="yandex_compute_disk&lt;br&gt;network-ssd, 20 ГБ" vertex="1">
+          <mxGeometry height="125" width="270" x="420" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="vm" parent="infra_group" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=2;fontSize=21;" value="yandex_compute_instance" vertex="1">
+          <mxGeometry height="90" width="340" x="210" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="public_ip" parent="infra_group" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=2;fontSize=21;" value="Public IP&lt;br&gt;NAT=true" vertex="1">
+          <mxGeometry height="110" width="270" x="245" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="e_network_vm" edge="1" parent="infra_group" source="network" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="vm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_disk_vm" edge="1" parent="infra_group" source="disk" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="vm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_vm_ip" edge="1" parent="infra_group" source="vm" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="public_ip">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tf_plan" parent="terraform_group" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=2;fontSize=22;" value="terraform plan" vertex="1">
+          <mxGeometry height="90" width="280" x="270" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="tf_apply" parent="terraform_group" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#1b5e20;strokeWidth=2;fontSize=22;" value="terraform apply" vertex="1">
+          <mxGeometry height="90" width="280" x="270" y="225" as="geometry" />
+        </mxCell>
+        <mxCell id="e_plan_apply" edge="1" parent="terraform_group" source="tf_plan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="tf_apply">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_apply_infra" edge="1" parent="terraform_group" source="tf_apply" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="infra_group">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="git" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#0d47a1;strokeWidth=2;fontSize=22;" value="Git" vertex="1">
+          <mxGeometry height="85" width="300" x="410" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#0d47a1;strokeWidth=2;fontSize=22;" value="GitLab CI" vertex="1">
+          <mxGeometry height="125" width="340" x="390" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="build" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#0d47a1;strokeWidth=2;fontSize=22;" value="docker build" vertex="1">
+          <mxGeometry height="120" width="290" x="415" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="tests" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#0d47a1;strokeWidth=2;fontSize=22;" value="run tests" vertex="1">
+          <mxGeometry height="85" width="280" x="420" y="635" as="geometry" />
+        </mxCell>
+        <mxCell id="registry" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#fff9c4;strokeColor=#f57f17;strokeWidth=2;fontSize=21;" value="Yandex Container Registry" vertex="1">
+          <mxGeometry height="150" width="320" x="85" y="1110" as="geometry" />
+        </mxCell>
+        <mxCell id="e_git_cicd" edge="1" parent="1" source="git" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=18;" target="cicd" value="Push">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_cicd_build" edge="1" parent="1" source="cicd" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="build">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_build_tests" edge="1" parent="1" source="build" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="tests">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_tests_save" edge="1" parent="1" source="tests" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="registry">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="245" y="680" />
+            </Array>
+            <mxPoint x="245.0666666666666" y="900" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="v6wHgerPfP5RqrH-DwGE-2" connectable="0" parent="e_tests_save" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;Push image&lt;/span&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.1121" y="4" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_tests_plan" edge="1" parent="1" source="tests" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=18;" target="tf_plan" value="Tests success">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1130" y="680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_registry_deploy" edge="1" parent="1" source="registry" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=1;fontSize=18;" target="deploy" value="Образ доступен">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="245" y="1915" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_infra_deploy" edge="1" parent="1" source="infra_group" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="deploy">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1130" y="1915" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="deploy" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff9c4;strokeColor=#f57f17;strokeWidth=2;fontSize=22;" value="Deploy&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Ansible&lt;/span&gt;" vertex="1">
+          <mxGeometry height="150" width="370" x="420" y="1960" as="geometry" />
+        </mxCell>
+        <mxCell id="e_deploy_docker" edge="1" parent="1" source="deploy" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="docker_setup">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="docker_setup" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff9c4;strokeColor=#f57f17;strokeWidth=2;fontSize=22;" value="App run" vertex="1">
+          <mxGeometry height="100" width="310" x="1110" y="1985" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
